@@ -1,0 +1,20 @@
+{
+    "name": "ifnir/routipiper",
+    "description": "Explore web routing",
+    "version": "0.0.1",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ifnir\\Routipiper\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ifnir",
+            "email": "theifnir@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
