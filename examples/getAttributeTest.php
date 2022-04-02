@@ -2,12 +2,15 @@
 
 require_once (__DIR__ . '/../vendor/autoload.php');
 
-use Ifnir\Routipiper\Attribute;
+use Ifnir\Routipiper\Controller;
+use Ifnir\Routipiper\Meta;
 
-#[Attribute(value:1234)]
-class TestClass {}
+class Test {
+    #[Meta('/home/', alias: 'home')]
+    public function index(): void
+    {
 
+    }
+}
 
-$test = Attribute::getPath(TestClass::class);
-
-var_dump($test);
+$reflector = Controller::getClass(Test::class)->getMethods();
