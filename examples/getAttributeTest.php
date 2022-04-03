@@ -3,10 +3,10 @@
 require_once (__DIR__ . '/../vendor/autoload.php');
 
 use Ifnir\Routipiper\Controller;
-use Ifnir\Routipiper\Meta;
+use Ifnir\Routipiper\Route;
 
 class Test {
-    #[Meta('/home/', alias: 'home')]
+    #[Route('/home/', alias: 'home')]
     public function index(): void
     {
 

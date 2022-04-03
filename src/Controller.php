@@ -41,7 +41,7 @@ class Controller
         {
             $reflectionMethod = new ReflectionMethod($this->c, $method->getName());
     
-            $attributes = $reflectionMethod->getAttributes(Meta::class);
+            $attributes = $reflectionMethod->getAttributes(Route::class);
         
             echo "reflecting method '", $method->getName(), "'\r\n";
             foreach ($attributes as $attribute) {
