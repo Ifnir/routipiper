@@ -4,6 +4,7 @@ namespace Ifnir\Routipiper;
 
 use ReflectionClass;
 use ReflectionMethod;
+use Ifnir\Routipiper\Attribute\Route;
 
 class Controller
 {
@@ -44,20 +45,19 @@ class Controller
             $attributes = $reflectionMethod->getAttributes(Route::class);
         
             echo "reflecting method '", $method->getName(), "'\r\n";
-            foreach ($attributes as $attribute) {
-               var_dump($attribute->newInstance());
-            }
+            
+            $this->getAttributes($attributes);
+           
         }
 
         return $this;
     }
 
-    public function getAttributes()
+    public function getAttributes($attributes)
     {
-        $r_att = $this->attribute->getAttributes(Controller::class, 0);
-
-        var_dump($r_att);
-
-        return $this;
+        foreach ($attributes as $attribute)
+        {
+            var_dump($attribute->newInstance());
+        }
     }
 }
