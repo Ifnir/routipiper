@@ -13,7 +13,7 @@ class Route
 
     public function __construct(
         string|array $path = null,
-        string|array $method = [],
+        string|array $methods = [],
         public ?string $alias = null
     )
     {
@@ -22,7 +22,7 @@ class Route
         } else {
             $this->path = $path;
         }
-        $this->setMethods($method);
+        $this->setMethods($methods);
     }
 
     public function setPath(string $path)

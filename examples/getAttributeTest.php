@@ -6,7 +6,7 @@ use Ifnir\Routipiper\Controller;
 use Ifnir\Routipiper\Attribute\Route;
 
 class Test {
-    #[Route('/home/', alias: 'home')]
+    #[Route('/home/', methods: 'GET', alias: 'home')]
     public function index(): void
     {
 
