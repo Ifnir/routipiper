@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:8.1-apache
 
 ARG UID=1000
 RUN useradd -G www-data -u ${UID} app
