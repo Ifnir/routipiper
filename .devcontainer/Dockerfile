@@ -10,10 +10,10 @@ RUN docker-php-ext-install \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY apache-vhost.conf /etc/apache2/sites-available/000-laravel.conf
+COPY apache-vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite headers
 RUN a2dissite *
-RUN a2ensite 000-laravel.conf
+RUN a2ensite 000-default.conf
 
 USER app
 
