@@ -1,28 +1,41 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-	"name": "PHP devcontainer",
+	"name": "PHP",
 	"build": {
-        "dockerfile": "Dockerfile",
+        	"dockerfile": "Dockerfile",
 		"args": { 
 		    // Update VARIANT to pick a PHP version: 8, 8.1, 8.0, 7, 7.4
 		    // Append -bullseye or -buster to pin to an OS version.
 		    // Use -bullseye variants on local on arm64/Apple Silicon.
-		    "PHP_VERSION": "8.1"
+		    "VARIANT": "8.1-apache-bullseye"
 		}
 	},
-    	"settings": {
-		// "terminal.integrated.shell.linux": "/bin/bash",
-		"php.validate.executablePath": "/usr/local/bin/php",
-		"editor.tabSize": 4,
-		"workbench.colorTheme": "Quiet Light" 
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": { 
+				"php.validate.executablePath": "/usr/local/bin/php",
+				"editor.tabSize": 4,
+				"workbench.colorTheme": "Quiet Light" 
+			},
+			
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"xdebug.php-debug",
+				"bmewburn.vscode-intelephense-client",
+				"mrmlnc.vscode-apache"
+			]
+		}
 	},
 			
-	"appPort": [8000],
+	"forwardPorts": [8000],
 	// Uncomment this like if you want to keep your containers running after VS Code shuts down.
 	// "shutdownAction": "none",
 
-	"workspaceMount": "src=${localWorkspaceFolder},dst=/var/www/html,type=bind,consistency=cached",
-	"workspaceFolder": "/var/www/html",
+	//"workspaceMount": "src=${localWorkspaceFolder},dst=/var/www/html,type=bind,consistency=cached",
+	//"workspaceFolder": "/var/www/html",
 
 	"postCreateCommand": "composer install",
+	"remoteUser": "vscode"
 }
