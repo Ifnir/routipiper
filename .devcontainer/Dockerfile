@@ -16,7 +16,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 RUN apt-get update && apt-get install -y zip libzip-dev git inetutils-ping
 
 RUN docker-php-ext-install \
-    pdo_mysql zip
+    zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

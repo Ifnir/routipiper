@@ -1,19 +1,11 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
 	"name": "PHP",
-	"build": {
-		"dockerComposeFile": "docker-compose.yml",
-		"service": "app",
-		"settings": {
-			"terminal.integrated.shell.linux": "/bin/bash" 
-		}, 
-		"args": { 
-		    // Update VARIANT to pick a PHP version: 8, 8.1, 8.0, 7, 7.4
-		    // Append -bullseye or -buster to pin to an OS version.
-		    // Use -bullseye variants on local on arm64/Apple Silicon.
-		    "VARIANT": "8.1-apache-bullseye"
-		}
-	},
+
+	"dockerComposeFile": ["docker-compose.yml"],
+	"service": "app",
+	
+	
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
@@ -21,7 +13,7 @@
 			"settings": { 
 				"php.validate.executablePath": "/usr/local/bin/php",
 				"editor.tabSize": 4,
-				"workbench.colorTheme": "Quiet Light",
+				"workbench.colorTheme": "Quiet Light"
 			},
 			
 			// Add the IDs of extensions you want installed when the container is created.
@@ -35,6 +27,7 @@
 	
 			
 	"forwardPorts": [8000],
+	//"appPort": [80],
 	// Uncomment this like if you want to keep your containers running after VS Code shuts down.
 	// "shutdownAction": "none",
 
