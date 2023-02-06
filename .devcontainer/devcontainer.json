@@ -37,5 +37,6 @@
 	//"workspaceFolder": "/var/www/html",
 
 	"postCreateCommand": "composer install",
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"containerUser": "vscode"
 }
