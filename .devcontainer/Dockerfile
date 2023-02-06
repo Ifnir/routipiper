@@ -19,6 +19,6 @@ RUN a2ensite 000-default.conf
 
 USER app
 
-VOLUME [ "/var/www/html" ]
-EXPOSE 8000
-CMD [ "apache2-foreground" ]
+#VOLUME [ "/var/www/html" ]
+#EXPOSE 8000
+#CMD [ "apache2-foreground" ]
