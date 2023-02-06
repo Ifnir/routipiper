@@ -3,22 +3,26 @@
 	"name": "PHP devcontainer",
 	"build": {
         "dockerfile": "Dockerfile",
-        "args": { 
-            // Update VARIANT to pick a PHP version: 8, 8.1, 8.0, 7, 7.4
-            // Append -bullseye or -buster to pin to an OS version.
-            // Use -bullseye variants on local on arm64/Apple Silicon.
-            "PHP_VERSION": "8.1"
-        }
-    },
+		"args": { 
+		    // Update VARIANT to pick a PHP version: 8, 8.1, 8.0, 7, 7.4
+		    // Append -bullseye or -buster to pin to an OS version.
+		    // Use -bullseye variants on local on arm64/Apple Silicon.
+		    "PHP_VERSION": "8.1"
+		}
+	},
+    	"settings": {
+		// "terminal.integrated.shell.linux": "/bin/bash",
+		"php.validate.executablePath": "/usr/local/bin/php",
+		"editor.tabSize": 4,
+		"workbench.colorTheme": "Quiet Light" 
+	},
 			
 	"appPort": [8000],
 	// Uncomment this like if you want to keep your containers running after VS Code shuts down.
 	// "shutdownAction": "none",
 
 	"workspaceMount": "src=${localWorkspaceFolder},dst=/var/www/html,type=bind,consistency=cached",
-	"workspaceFolder": "/var/www/html"
-	// Uncomment the next line if you want to add in default container specific settings.json values
-	// "settings":  { "workbench.colorTheme": "Quiet Light" },
+	"workspaceFolder": "/var/www/html",
 
-	// "postCreateCommand": "",
+	"postCreateCommand": "composer install",
 }
