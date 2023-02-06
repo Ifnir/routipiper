@@ -2,8 +2,9 @@
 ARG VARIANT=8.1-apache-bullseye
 FROM php:${VARIANT}
 
-ARG UID=1000
-RUN useradd -G www-data -u ${UID} app
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
 RUN apt-get update && apt-get install -y zip libzip-dev git inetutils-ping
 
@@ -17,7 +18,7 @@ RUN a2enmod rewrite headers
 RUN a2dissite *
 RUN a2ensite 000-default.conf
 
-USER app
+
 
 #VOLUME [ "/var/www/html" ]
 #EXPOSE 8000
