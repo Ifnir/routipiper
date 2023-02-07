@@ -25,8 +25,12 @@ RUN a2enmod rewrite headers
 RUN a2dissite *
 RUN a2ensite 000-default.conf
 
+RUN mkdir -p /workspace \
+    && chown -R ${USER_UID}:${USER_GID} /workspace
+
+WORKDIR /workspace
 
 
-VOLUME [ "/var/www/html" ]
+VOLUME [ "/var/www/html", "/workspace" ]
 EXPOSE 8000
 CMD [ "apache2-foreground" ]
