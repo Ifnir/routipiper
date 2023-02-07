@@ -12,6 +12,7 @@ services:
       - "8000:80"
     volumes:
       - ./:/var/www/html
+      - workspace:/workspace
       - /var/run/docker.sock:/var/run/docker.sock
     command: /bin/sh -c "service apache2 start && while sleep 1000; do :; done"
     environment:
