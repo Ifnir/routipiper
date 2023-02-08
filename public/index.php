@@ -13,4 +13,4 @@ class Test {
     }
 }
 
-$reflector = Controller::getClass(Test::class)->getMethods();
+$reflector = Controller::getClass(Test::class)->getRouteMethods();

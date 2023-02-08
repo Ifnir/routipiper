@@ -26,7 +26,6 @@ class Controller
         return self::$class;
     }
 
-    // Change name on this function
     public function setReflection($attribute)
     {
         $this->attribute = new ReflectionClass($attribute);
@@ -35,27 +34,30 @@ class Controller
         return $this;
     }
 
-    public function getMethods()
+    public function getRouteMethods()
     {
-     
+        $attributes = null;
+
         foreach($this->attribute->getMethods(ReflectionMethod::IS_PUBLIC) as $method)
         {
             $reflectionMethod = new ReflectionMethod($this->c, $method->getName());
     
             $attributes = $reflectionMethod->getAttributes(Route::class);
             
-            $this->getAttributes($attributes);
-           
         }
+
+        $this->getAttributes($attributes);
 
         return $this;
     }
 
     public function getAttributes($attributes)
     {
-        foreach ($attributes as $attribute)
-        {
-            var_dump($attribute->newInstance());
-        }
+
+        $test = array_map(fn() => $attributes[0]->getArguments(), $attributes);
+        var_dump($test[0]);
+        echo "<br/>";
+        echo "\n\r" . $test[0]["methods"];
+        
     }
 }
