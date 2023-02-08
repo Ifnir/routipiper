@@ -2,6 +2,9 @@
 ARG VARIANT=8.1-apache-bullseye
 FROM php:${VARIANT}
 
+ARG NODE_VERSION="none"
+RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+
 ARG USERNAME=php-apache
 ARG USER_UID=1001
 ARG USER_GID=$USER_UID
@@ -12,6 +15,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
+    && usermod -aG www-data $USERNAME
 
 RUN apt-get update && apt-get install -y zip libzip-dev git inetutils-ping
 
@@ -25,12 +29,6 @@ RUN a2enmod rewrite headers
 RUN a2dissite *
 RUN a2ensite 000-default.conf
 
-RUN mkdir -p /workspace \
-    && chown -R ${USER_UID}:${USER_GID} /workspace
-
-WORKDIR /workspace
-
-
-VOLUME [ "/var/www/html", "/workspace" ]
+VOLUME [ "/var/www/html" ]
 EXPOSE 8000
 CMD [ "apache2-foreground" ]
