@@ -27,7 +27,12 @@
 	},
 	
 			
-	"forwardPorts": [8000],
+	"portsAttributes": {
+		"8000": {
+			"label": "Hello Remote World",
+			"onAutoForward": "notify"
+		}
+	},
 	//"appPort": [80],
 	// Uncomment this like if you want to keep your containers running after VS Code shuts down.
 	// "shutdownAction": "none",
