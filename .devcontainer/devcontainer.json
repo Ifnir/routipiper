@@ -26,7 +26,7 @@
 		}
 	},
 	
-			
+	"forwardPorts": [8000],		
 	"portsAttributes": {
 		"8000": {
 			"label": "Hello Remote World",
@@ -38,7 +38,7 @@
 	// "shutdownAction": "none",
 
 	//"workspaceMount": "src=${localWorkspaceFolder},dst=/var/www/html,type=bind,consistency=cached",
-	//"workspaceFolder": "/var/www/html",
+	"workspaceFolder": "/var/www/html",
 
 	"postCreateCommand": "composer install",
 	"remoteUser": "php-apache",

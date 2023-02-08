@@ -37,14 +37,12 @@ class Controller
 
     public function getMethods()
     {
-
+     
         foreach($this->attribute->getMethods(ReflectionMethod::IS_PUBLIC) as $method)
         {
             $reflectionMethod = new ReflectionMethod($this->c, $method->getName());
     
             $attributes = $reflectionMethod->getAttributes(Route::class);
-        
-            echo "reflecting method '", $method->getName(), "'\r\n";
             
             $this->getAttributes($attributes);
            
