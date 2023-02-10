@@ -11,6 +11,11 @@ class Test {
     {
 
     }
+    #[Route('/post/id', methods: 'GET', alias: 'post')]
+    public function show(): void
+    {
+
+    }
 }
 
 $reflector = Controller::getClass(Test::class)->getRouteMethods();

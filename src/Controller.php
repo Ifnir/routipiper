@@ -36,28 +36,29 @@ class Controller
 
     public function getRouteMethods()
     {
-        $attributes = null;
+        $attributes = [];
 
         foreach($this->attribute->getMethods(ReflectionMethod::IS_PUBLIC) as $method)
         {
             $reflectionMethod = new ReflectionMethod($this->c, $method->getName());
     
-            $attributes = $reflectionMethod->getAttributes(Route::class);
+            $attributes[] = $reflectionMethod->getAttributes(Route::class);
             
         }
 
-        $this->getAttributes($attributes);
+        $this->getArgumentParts($attributes);
 
         return $this;
     }
 
-    public function getAttributes($attributes)
+    public function getArgumentParts($attributes)
     {
+        foreach ($attributes as $attribute)
+        {
+            var_dump($attribute[0]->getArguments());
+        }
 
-        $test = array_map(fn() => $attributes[0]->getArguments(), $attributes);
-        var_dump($test[0]);
         echo "<br/>";
-        echo "\n\r" . $test[0]["methods"];
-        
+        //echo "\n\r" . $test[0]["methods"];
     }
 }
